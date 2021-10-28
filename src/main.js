@@ -13,6 +13,7 @@ Vue.use(VueRouter);
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'jquery/src/jquery.js'
 
 Vue.config.productionTip = false
 
