@@ -5,15 +5,25 @@ import router from './router'
 import store from './store'
 import {BootstrapVue, BootstrapVueIcons} from 'bootstrap-vue'
 import VueRouter from 'vue-router'
+import { VueBootstrapDatetimePicker } from 'vue-bootstrap-datetimepicker';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'jquery/src/jquery.js'
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+
+library.add(faCalendar)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('datetime-picker', VueBootstrapDatetimePicker)
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(Vuex);
 Vue.use(VueRouter);
-
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'jquery/src/jquery.js'
 
 Vue.config.productionTip = false
 

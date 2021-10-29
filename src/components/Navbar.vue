@@ -10,7 +10,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <!-- Centered nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item href="#" center>Reservation</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/reservation'}" center>Reservation</b-nav-item>
         <b-nav-item href="#" center>Boats</b-nav-item>
         <b-nav-item href="#" center>Company</b-nav-item>
       </b-navbar-nav>
@@ -54,12 +54,11 @@ export default {
     font-size:14px;
     padding:8px 12px;
     text-decoration:none;
-    opacity: 80%;
+    transition: 0.3s;
 }
 .myButton:hover {
-    background-color:#e47aff;
-    border:1px solid #e47aff;
-    opacity: 80%;
+    background-color:#39378d;
+    border:1px solid #39378d;
 }
 
 .myButton:active {

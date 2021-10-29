@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h3 class="center">Registration</h3>
+        <h2 class="center"><strong>Registration</strong></h2>
         <form method="POST">
         <div class="row align-items-center justify-content-center">
             <div class="col align-self-start">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col">
-                <Modul button_text="Privacy Policy" title="Privacy Policy" description=Lorem20 />
+                <Modul button_text="Privacy Policy" title="Privacy Policy" description=Lorem20 :showReserve="false"/>
             </div>
             <div class="col"></div>
         </div>

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/views/Home.vue'
 import Login from '../components/views/Login.vue'
 import Register from '../components/views/Register.vue'
+import Reservation from '../components/views/Reservation.vue'
 
 Vue.use(VueRouter)
 
@@ -13,10 +14,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/privacy',
-    name: 'Privacy Policy',
-  },
-  {
     path: '/login',
     name: 'Login page',
     component: Login
@@ -25,7 +22,13 @@ const routes = [
     path: '/register',
     name: 'Registration page',
     component: Register
+  },
+  {
+    path: '/reservation',
+    name: 'Reservation page',
+    component: Reservation
   }
+
 ]
 
 const router = new VueRouter({
