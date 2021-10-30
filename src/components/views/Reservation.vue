@@ -94,10 +94,10 @@
                         <p>Condition:</p>
                         <div class="row">
                             <div class="col">
-                                <Modul button_text="Team" title="Team Members" description="Need to find out how to add HTML" variant="outline-success" :showReserve="true"/>
+                                <ModalMembers id="1" name="Name" phone="+359-1233456" buttonText="Team"/>
                             </div>
                             <div class="col">
-                                <Modul button_text="Team" title="Team Members" description="Need to find out how to add HTML" variant="outline-success" :showReserve="true"/>
+                                
                             </div>
                         </div>
                     </b-card-text>
@@ -118,10 +118,10 @@
                         <p>Condition:</p>
                         <div class="row">
                             <div class="col">
-                                <Modul button_text="Team" title="Team Members" description="Need to find out how to add HTML" variant="outline-success" :showReserve="true"/>
+                                <ModalMembers id="2" name="Name" phone="+359-1233456" buttonText="Team"/>
                             </div>
                             <div class="col">
-                                <Modul button_text="Team" title="Team Members" description="Need to find out how to add HTML" variant="outline-success" :showReserve="true"/>
+                               
                             </div>
                         </div>
                     </b-card-text>
@@ -136,13 +136,13 @@
 
 <script>
 import Navbar from '../Navbar.vue'
-import Modul from '../Modul.vue'
+import ModalMembers from '../ModalMembers.vue'
 
 export default {
     name: 'Registration',
     components: {
         Navbar,
-        Modul,
+        ModalMembers,
     },
     data () {
         return {
