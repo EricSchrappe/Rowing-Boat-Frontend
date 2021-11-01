@@ -19,7 +19,7 @@ library.add(faCalendar)
 library.add(faTimes)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.component('datetime-picker', VueBootstrapDatetimePicker)
+Vue.component('date-picker', VueBootstrapDatetimePicker)
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

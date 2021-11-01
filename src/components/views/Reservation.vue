@@ -77,6 +77,18 @@
         </div>
         -->
         </form>
+        <div class="row">
+
+            <div class="col-md-12">
+            <h1 class="h3">
+                Vue bootstrap 4 date-time picker
+            </h1>
+            <date-picker name="date" v-model="date" :config="options"></date-picker>
+            <hr>
+            <p>
+                v-model: {{date}}
+            </p>
+            </div>
     </div>
     <div class="container">
         <h2>Results:</h2>
@@ -94,10 +106,10 @@
                         <p>Condition:</p>
                         <div class="row">
                             <div class="col">
-                                <ModalMembers id="1" name="Name" phone="+359-1233456" buttonText="Team"/>
+                                <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                                
+                                <ModalMembers id="3" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success"/>
                             </div>
                         </div>
                     </b-card-text>
@@ -118,10 +130,10 @@
                         <p>Condition:</p>
                         <div class="row">
                             <div class="col">
-                                <ModalMembers id="2" name="Name" phone="+359-1233456" buttonText="Team"/>
+                                <ModalMembers id="2" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                               
+                               <ModalMembers id="4" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success"/>
                             </div>
                         </div>
                     </b-card-text>
@@ -132,11 +144,12 @@
         </b-card-group>
     </div>
 </div>
+</div>
 </template>
 
 <script>
 import Navbar from '../Navbar.vue'
-import ModalMembers from '../ModalMembers.vue'
+import ModalMembers from '../ModalReservation.vue'
 
 export default {
     name: 'Registration',
@@ -146,14 +159,18 @@ export default {
     },
     data () {
         return {
-            date: new Date(),
+            date: null,
             options: {
-                format: 'DD/MM/YYYY',
+            // https://momentjs.com/docs/#/displaying/
+                format: 'DD/MM/YYYY h:mm',
                 useCurrent: false,
+                showClear: true,
+                showClose: true,
                 sideBySide: true,
-            },
+            }
+        
         }
-    }
+    },
 }
 </script>
 
