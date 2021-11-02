@@ -6,15 +6,15 @@
     <div class="container-fluid">
         <form class="form-inline justify-content-center spread">
             <div class="form-group">
-                <select class="form-control straightBorderRight space">
+                <select class="form-control straightBorderRight space" required>
                     <option value="" selected disabled>Type</option>
-                    <option value="">RACING</option>
-                    <option value="">GIG</option>
+                    <option>RACING</option>
+                    <option>GIG</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space">
-                    <option selected disabled>Class</option>
+                <select class="form-control noBorder space" required>
+                    <option value="" selected disabled>Class</option>
                     <option>1x</option>
                     <option>2x</option>
                     <option>2-</option>
@@ -25,31 +25,40 @@
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space">
-                    <option selected disabled>Gender</option>
+               <div class="containerTime">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <date-picker class="noBorder text-center" v-model="date" :config="options" placeholder="Date &amp; Time"></date-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control noBorder space" required>
+                    <option value="" selected disabled>Gender</option>
                     <option>MALE</option>
                     <option>FEMALE</option>
                     <option>DIVERSE</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space">
-                    <option selected disabled>Age Group</option>
+                <select class="form-control noBorder space" required>
+                    <option value="" selected disabled>Age Group</option>
                     <option>18-35</option>
                     <option>36-55</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space">
-                    <option selected disabled>Fitness Level</option>
+                <select class="form-control noBorder space" required>
+                    <option value="" selected disabled>Fitness Level</option>
                     <option>LOW</option>
                     <option>MODERATE</option>
                     <option>HIGH</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space">
-                    <option selected disabled>Skill Level</option>
+                <select class="form-control noBorder space" required>
+                    <option value="" selected disabled>Skill Level</option>
                     <option>LOW</option>
                     <option>MODERATE</option>
                     <option>HIGH</option>
@@ -58,38 +67,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-search space">Search</button>
             </div>
-            <!--
-            <div class="form-group">
-               <div class="containerTime">
-                    <div class="row">
-                        <div class="col-md-12">
-                            
-                            <date-picker class="noBorder" v-model="date" :config="options"></date-picker>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-        
-        <div>
-            <datetime-picker></datetime-picker>
-        </div>
-        -->
         </form>
-        <div class="row">
-
-            <div class="col-md-12">
-            <h1 class="h3">
-                Vue bootstrap 4 date-time picker
-            </h1>
-            <date-picker name="date" v-model="date" :config="options"></date-picker>
-            <hr>
-            <p>
-                v-model: {{date}}
-            </p>
-            </div>
-    </div>
     <div class="container">
         <h2>Results:</h2>
         <b-card-group deck class="my-4 justify-content-between">
@@ -151,6 +129,7 @@
 import Navbar from '../Navbar.vue'
 import ModalMembers from '../ModalReservation.vue'
 
+
 export default {
     name: 'Registration',
     components: {
@@ -162,7 +141,7 @@ export default {
             date: null,
             options: {
             // https://momentjs.com/docs/#/displaying/
-                format: 'DD/MM/YYYY h:mm',
+                format: 'DD.MM.YYYY h:mm',
                 useCurrent: false,
                 showClear: true,
                 showClose: true,
@@ -181,6 +160,15 @@ export default {
 .noBorder {
     border-radius: 0 0 0 0;
 }
+
+select:invalid {
+   color: grey
+}
+
+select:valid {
+   color: black;
+}   
+
 .containerTime {
     margin: 0;
 }

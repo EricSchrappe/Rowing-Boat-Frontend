@@ -4,6 +4,7 @@ import Home from '../components/views/Home.vue'
 import Login from '../components/views/Login.vue'
 import Register from '../components/views/Register.vue'
 import Reservation from '../components/views/Reservation.vue'
+import SeeReservations from '../components/views/SeeReservations.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,12 @@ const routes = [
     path: '/reservation',
     name: 'Reservation page',
     component: Reservation
-  }
+  },
+  {
+    path: '/reservations',
+    name: 'See Reservations page',
+    component: SeeReservations
+  },
 
 ]
 
