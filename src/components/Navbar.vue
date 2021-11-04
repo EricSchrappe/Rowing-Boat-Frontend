@@ -1,8 +1,8 @@
 <template>
 <div>
   <b-navbar toggleable="lg" type="light" variant="light">
-    <b-navbar-brand href="#">
-        <img src="" alt="Rowing">
+    <b-navbar-brand>
+        <router-link to="/"><img src="../assets/logo.png" alt="Boat" style="max-height: 25px; max-width: 25px;"></router-link>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -13,6 +13,7 @@
         <b-nav-item tag="router-link" :to="{ path: '/reservation'}" center>Reservation</b-nav-item>
         <b-nav-item href="#" center>Boats</b-nav-item>
         <b-nav-item href="#" center>Company</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/admin/reservation'}" center>Requested Reservation</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

@@ -5,6 +5,7 @@ import Login from '../components/views/Login.vue'
 import Register from '../components/views/Register.vue'
 import Reservation from '../components/views/Reservation.vue'
 import SeeReservations from '../components/views/SeeReservations.vue'
+import AdminReservation from '../components/views/AdminReservation.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/reservations',
     name: 'See Reservations page',
     component: SeeReservations
+  },
+  {
+    path: '/admin/reservation',
+    name: 'Admin Reservation page',
+    component: AdminReservation
   },
 
 ]
