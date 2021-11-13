@@ -1,6 +1,6 @@
 <template>
      <div class="container mt-5">
-        <h2 class="text-center my-5"><strong>Requested Reservations</strong></h2>
+        <h2 class="text-center my-5"><strong>Requested Registrations</strong></h2>
         <div class="container mt-5" v-for="userRequest in this.userRequests" :key="userRequest.user_id">
             <div class="row justify-content-center">
                 <div class="col-lg-3 borderColStart align-self-center">

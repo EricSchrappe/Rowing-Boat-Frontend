@@ -5,7 +5,7 @@ import Login from '../components/views/Login.vue'
 import Register from '../components/views/Register.vue'
 import Reservation from '../components/views/Reservation.vue'
 import SeeReservations from '../components/views/SeeReservations.vue'
-import AdminReservation from '../components/views/AdminReservation.vue'
+import AdminRegistrations from '../components/views/AdminRegistrations.vue'
 
 Vue.use(VueRouter)
 
@@ -36,9 +36,9 @@ const routes = [
     component: SeeReservations
   },
   {
-    path: '/admin/reservation',
-    name: 'Admin Reservation page',
-    component: AdminReservation
+    path: '/admin/registrations',
+    name: 'Admin Registrations page',
+    component: AdminRegistrations
   },
 
 ]

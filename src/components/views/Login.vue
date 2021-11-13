@@ -4,6 +4,9 @@
     <form>
         <p>Welcome back</p>
         <h2><strong>Log in your account</strong></h2>
+        <div class="alert alert-danger text-center" role="alert" v-if="error">
+            {{ errorMessage }}
+        </div>
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
@@ -67,7 +70,6 @@ export default {
                 this.pushIsAdmin(isAdmin)
                 this.$router.push('/');
             }
-
 
             return false
         }

@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <h2 class="center"><strong>Registration</strong></h2>
+        <div class="alert alert-danger text-center" role="alert" v-if="error">
+            {{ message }}
+        </div>
         <form>
         <div class="row align-items-center justify-content-center">
             <div class="col align-self-start">
@@ -107,8 +110,8 @@ export default {
                 ambitions: '',
                 skill_level: ''
             },
-            errorMessage: '',
-            error: false
+            message: '',
+            error: false,
         }
     },
     methods: {
@@ -131,7 +134,15 @@ export default {
                 headers: { "Content-Type": "multipart/form-data" }
             })
 
-            console.log(result)
+            if(result.data.success === true){
+                this.message = result.data.message;
+                this.error = false;
+                this.$router.push('/login');
+            }else{
+                this.message = result.data.message;
+                this.error = true;
+            }
+
             return false
         }
     }

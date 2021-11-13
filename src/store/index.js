@@ -26,7 +26,10 @@ const actions = {
     },
     pushIsAdmin: (store, isAdmin) => {
         store.commit('ADD_IS_ADMIN', isAdmin)
-    }
+    },
+    removeToken: (store) => {
+        store.commit('ADD_TOKEN', undefined);
+    },
 }
 
 const store =  new Vuex.Store({
