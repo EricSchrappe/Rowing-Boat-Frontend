@@ -1,36 +1,18 @@
 <template>
      <div class="container mt-5">
         <h2 class="text-center my-5"><strong>Requested Reservations</strong></h2>
-        <div class="container mt-5">
+        <div class="container mt-5" v-for="userRequest in this.userRequests" :key="userRequest.user_id">
             <div class="row justify-content-center">
                 <div class="col-lg-3 borderColStart align-self-center">
                     <p class="smallHeadline">Name</p>
-                    <p>Mario</p>
+                    <p>{{userRequest.firstname}}</p>
                 </div>
                 <div class="col-lg-3 borderColEnd align-self-center">
                     <p class="smallHeadline">Last Name</p>
-                    <p>Rossi</p>
+                    <p>{{userRequest.lastname}}</p>
                 </div>
                 <div class="col-lg-2 align-self-center ml-5">
-                    <button class="btn btn-success btn-lg btn-block">Accept</button>
-                </div>
-                <div class="col-lg-2 align-self-center ml-5">
-                    <button class="btn btn-danger btn-lg btn-block">Decline</button>
-                </div>
-            </div>
-        </div>
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-3 borderColStart align-self-center">
-                    <p class="smallHeadline">Name</p>
-                    <p>Mario</p>
-                </div>
-                <div class="col-lg-3 borderColEnd align-self-center">
-                    <p class="smallHeadline">Last Name</p>
-                    <p>Rossi</p>
-                </div>
-                <div class="col-lg-2 align-self-center ml-5">
-                    <button class="btn btn-success btn-lg btn-block">Accept</button>
+                    <button class="btn btn-success btn-lg btn-block" @click="() => acceptAccount(userRequest.user_id)">Accept</button>
                 </div>
                 <div class="col-lg-2 align-self-center ml-5">
                     <button class="btn btn-danger btn-lg btn-block">Decline</button>
@@ -41,8 +23,49 @@
 </template>
 
 <script>
+import Vuex from 'vuex'
+import axios from 'axios'
+
 export default {
-    name: 'AdminReservation'
+    name: 'AdminReservation',
+    data() {
+        return {
+            userRequests: undefined
+        }
+    },
+    methods: {
+        ...Vuex.mapGetters(['getTokenFromStore']),
+        async acceptAccount(userId) {
+            const result = await axios({
+                method: 'POST',
+                url: `http://localhost:5000/admin/${userId}/validate_account`,
+                headers: { "x-access-tokens": this.getTokenFromStore() }
+            })
+
+            console.log(result)
+            if (result.data.success)
+            {
+                console.log(result.data.message)
+                this.userRequests = this.userRequests.filter(userRequest => userRequest.user_id != userId)
+            }            
+            else
+            {
+                // handle the error message
+            }
+        }
+    },
+
+    async beforeMount() {
+        const token = this.getTokenFromStore()
+        const result = await axios({
+            method: 'GET',
+            url: 'http://localhost:5000/admin/user_requests',
+            headers: { "x-access-tokens": token }
+        })
+
+        this.userRequests = result.data.users
+    }
+
 }
 </script>
 

@@ -18,9 +18,8 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <router-link to='/login' tag="button" class="myButton">Sign In</router-link>
-        <!--
-        <b-nav-item-dropdown right no-caret>
+        <router-link to='/login' tag="button" class="myButton" v-if="!connectedUser">Sign In</router-link>
+        <b-nav-item-dropdown right no-caret v-else>
           <template #button-content>
             <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           </template>
@@ -28,7 +27,6 @@
           <b-dropdown-item href="#">See Reservations</b-dropdown-item>
           <b-dropdown-item href="#">Notifications</b-dropdown-item>
         </b-nav-item-dropdown>
-        -->
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -37,8 +35,23 @@
 </template>
 
 <script>
+
+import Vuex from 'vuex'
+
 export default {
     name: 'Navbar',
+    data() {
+      return {
+        connectedUser: false
+      }
+    },
+    methods: {
+        ...Vuex.mapGetters(['getTokenFromStore', 'isAdmin'])
+    },
+    beforeMount() {
+        const token = this.getTokenFromStore()
+        this.connectedUser = token != undefined
+    }
 }
 </script>
 

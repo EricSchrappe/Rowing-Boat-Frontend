@@ -4,6 +4,15 @@
   </div>
 </template>
 
+<script>
+    import store from './store/index.js';
+    export default { 
+        store: store,
+        name: 'app'
+    }
+</script>
+
+
 <style>
 html, body {
   height: 100%;

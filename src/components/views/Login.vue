@@ -1,18 +1,18 @@
 <template>
 <div class="form-container">
     <div class="image-holder"></div>
-    <form method="post">
+    <form>
         <p>Welcome back</p>
         <h2><strong>Log in your account</strong></h2>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
         </div>
-        <button class="btn btn-success btn-block" type="submit">Login</button>
+        <button class="btn btn-success btn-block" type="button" @click="e => submit(e)">Login</button>
         <p class="no">Don't have an account?</p>
         <router-link to='/register' tag="button" class="btn btn-secondary btn-block">Register</router-link>
     </form>
@@ -21,8 +21,57 @@
 </template>
 
 <script>
+import Vuex from 'vuex'
+import axios from 'axios'
+
+
 export default {
-    name: 'Login'
+    name: 'Login',
+    data() {
+        return {
+            email: '',
+            password: '',
+            errorMessage: '',
+            error: false
+        }
+    },
+    methods: {
+        ...Vuex.mapActions(['pushToken', 'pushIsAdmin']),
+        ...Vuex.mapGetters(['getTokenFromStore', 'isAdmin']),
+        async submit(e) {
+            e.preventDefault()
+
+            const formData = new FormData()
+            formData.append('email', this.email)
+            formData.append('password', this.password)
+            const result = await axios({
+                method: 'POST',
+                url: 'http://localhost:5000/login',
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" }
+            })
+
+            const data = result.data
+            const token = data.token
+            const isAdmin = data.is_admin
+
+            if(!data.success)
+            {
+                this.error = true
+                this.errorMessage = data.message
+                console.log(this.errorMessage)
+            }
+            else
+            {
+                this.pushToken(token)
+                this.pushIsAdmin(isAdmin)
+                this.$router.push('/');
+            }
+
+
+            return false
+        }
+    }
 }
 </script>
 

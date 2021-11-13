@@ -107,7 +107,7 @@ export default {
                 ambitions: '',
                 skill_level: ''
             },
-            erorrMessage: '',
+            errorMessage: '',
             error: false
         }
     },
@@ -126,7 +126,7 @@ export default {
 
             const result = await axios({
                 method: 'POST',
-                url: 'http://localhost:5000/user',
+                url: 'http://localhost:5000/register',
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" }
             })
