@@ -14,6 +14,7 @@
         <b-nav-item href="#" center>Boats</b-nav-item>
         <b-nav-item href="#" center>Company</b-nav-item>
         <b-nav-item tag="router-link" :to="{ path: '/admin/registrations'}" center>Requested Reservation</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/admin/management'}" center>Boat Management</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

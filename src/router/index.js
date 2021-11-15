@@ -6,6 +6,9 @@ import Register from '../components/views/Register.vue'
 import Reservation from '../components/views/Reservation.vue'
 import SeeReservations from '../components/views/SeeReservations.vue'
 import AdminRegistrations from '../components/views/AdminRegistrations.vue'
+import BoatManagement from '../components/views/BoatManagement.vue'
+import BoatAdd from '../components/views/BoatAdd.vue'
+import BoatUpdate from '../components/views/BoatUpdate.vue'
 
 Vue.use(VueRouter)
 
@@ -40,7 +43,21 @@ const routes = [
     name: 'Admin Registrations page',
     component: AdminRegistrations
   },
-
+  {
+    path: '/admin/management',
+    name: 'Admin Boat Management page',
+    component: BoatManagement
+  },
+  {
+    path: '/admin/management/add',
+    name: 'Admin Boat add page',
+    component: BoatAdd
+  },
+  {
+    path: '/admin/management/update',
+    name: 'Admin Boat update page',
+    component: BoatUpdate
+  },
 ]
 
 const router = new VueRouter({

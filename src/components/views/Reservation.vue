@@ -87,7 +87,7 @@
                                 <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                                <ModalMembers id="3" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success"/>
+                                <ModalMembers id="3" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success" modulVariant="success" alertText="Are you sure you want to reverse?" modulButtonText="Reserve"/>
                             </div>
                         </div>
                     </b-card-text>
@@ -111,7 +111,7 @@
                                 <ModalMembers id="2" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                               <ModalMembers id="4" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success"/>
+                               <ModalMembers id="4" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success" modulVariant="success" alertText="Are you sure you want to reverse?" modulButtonText="Reserve"/>
                             </div>
                         </div>
                     </b-card-text>

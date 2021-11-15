@@ -23,7 +23,7 @@
             </div>
         </div>
         <div v-else>
-          <h2 class="text-center"><strong>Are you sure you want to reverse?</strong></h2>
+          <h2 class="text-center"><strong>{{ alertText }}</strong></h2>
         </div>
     </template>
 
@@ -34,8 +34,8 @@
             <b-button class="mx-5" size="sm" variant="secondary" @click="cancel()">
               Cancel
             </b-button>
-            <b-button class="mx-5" size="sm" variant="success" @click="ok()">
-              Reverse
+            <b-button class="mx-5" size="sm" :variant="modulVariant" @click="ok()">
+              {{ modulButtonText }}
             </b-button>
           </div>
         </div>
@@ -58,6 +58,9 @@ export default {
         hideHeader: Boolean,
         team: Boolean,
         variant: String,
+        modulButtonText: String,
+        alertText: String,
+        modulVariant: String,
     }
 }
 </script>
