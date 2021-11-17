@@ -15,7 +15,7 @@
                     <button class="btn btn-success btn-lg btn-block" @click="() => acceptAccount(userRequest.user_id)">Accept</button>
                 </div>
                 <div class="col-lg-2 align-self-center ml-5">
-                    <button class="btn btn-danger btn-lg btn-block">Decline</button>
+                    <button class="btn btn-danger btn-lg btn-block" @click="() => declineAccount(userRequest.user_id)">Decline</button>
                 </div>
             </div>
         </div>
@@ -52,7 +52,25 @@ export default {
             {
                 // handle the error message
             }
-        }
+        },
+        async declineAccount(userId) {
+            const result = await axios({
+                method: 'POST',
+                url: `http://localhost:5000/admin/${userId}/decline_account`,
+                headers: { "x-access-tokens": this.getTokenFromStore() }
+            })
+
+            console.log(result)
+            if (result.data.success)
+            {
+                console.log(result.data.message)
+                this.userRequests = this.userRequests.filter(userRequest => userRequest.user_id != userId)
+            }            
+            else
+            {
+                // handle the error message
+            }
+    },
     },
 
     async beforeMount() {
