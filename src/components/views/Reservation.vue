@@ -93,7 +93,7 @@
                         <p>Available slots : {{ boat.available_slots }}
                         <div class="row">
                             <div class="col">
-                                <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
+                                <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" :teamComposition="boat.team" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
                                 <ModalMembers id="3" :team="false" 
@@ -104,6 +104,7 @@
                                     modulVariant="success" 
                                     alertText="Are you sure you want to reverse?"
                                     modulButtonText="Reserve"
+                                    :teamComposition="boat.team"
                                     @reserve-boat="() => reserveBoat(boat.boat_id)"
                                     />
                             </div>
@@ -135,7 +136,6 @@ export default {
         ModalMembers,
     },
     data () {
-        console.log(now())
         return {
             options: {
                 // https://momentjs.com/docs/#/displaying/
