@@ -13,8 +13,8 @@
         <b-nav-item tag="router-link" :to="{ path: '/reservation'}" center>Reservation</b-nav-item>
         <b-nav-item href="#" center>Boats</b-nav-item>
         <b-nav-item href="#" center>Company</b-nav-item>
-        <b-nav-item tag="router-link" :to="{ path: '/admin/registrations'}" center>Requested Reservation</b-nav-item>
-        <b-nav-item tag="router-link" :to="{ path: '/admin/management'}" center>Boat Management</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/admin/registrations'}" center v-if="adminUser">Requested Reservation</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/admin/management'}" center v-if="adminUser">Boat Management</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -24,9 +24,7 @@
           <template #button-content>
             <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           </template>
-          <b-dropdown-item href="#">View/Modify Account</b-dropdown-item>
-          <router-link to="/reservations">See Reservations</router-link>
-          <b-dropdown-item href="#">Notifications</b-dropdown-item>
+          <b-dropdown-item-button href="/reservations">SeeReservation</b-dropdown-item-button>
           <b-dropdown-item-button @click="() => logout()">Logout</b-dropdown-item-button>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -44,7 +42,8 @@ export default {
     name: 'Navbar',
     data() {
       return {
-        connectedUser: false
+        connectedUser: false,
+        adminUser: false
       }
     },
     methods: {
@@ -58,6 +57,7 @@ export default {
     beforeMount() {
         const token = this.getTokenFromStore()
         this.connectedUser = token != undefined
+        this.adminUser = this.isAdmin()
     }
 }
 </script>

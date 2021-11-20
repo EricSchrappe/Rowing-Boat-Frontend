@@ -5,7 +5,9 @@
         <div class="container-header">Boat Management</div>
         <div class="container">
             <div class="row justify-content-between row-style">
-                <div class="col-8 align-self-center">1x</div>
+                <div class="col-8 align-self-center">
+                    <h4 class="mt-1"><strong>Please add new boats here</strong></h4>
+                </div>
                 <div class="col-4">
                     <router-link to="/admin/management/add" tag="button" class="btn btn-block btn-success">Add</router-link>
                 </div>
@@ -52,64 +54,6 @@
                                 </div>
                                 <div class="col mt-2">
                                     <ModalMembers id="2" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Delete" variant="danger" modulVariant="danger" alertText="Are you sure you want to delete the boat?" modulButtonText="Delete"/>
-                                </div>
-                            </div>
-                        </b-card-text>
-                        </b-card-body>
-                    </b-col>
-                </b-row>
-            </b-card>
-            </b-card-group>
-        </div>
-        <div class="container">
-            <div class="row justify-content-between row-style">
-                <div class="col-8 align-self-center">2x</div>
-                <div class="col-4">
-                    <router-link to="/admin/management/add" tag="button" class="btn btn-block btn-success">Add</router-link>
-                </div>
-            </div>
-            <b-card-group deck class="my-4 justify-content-between">
-            <b-card no-body class="overflow-hidden" style="max-width: 1000px;">
-                <b-row no-gutters class="align-items-center justify-content-between">
-                    <b-col md="7">
-                        <b-card-img :src="require('../../assets/background.png')" alt="Image" class="rounded-0"></b-card-img>
-                    </b-col>
-                    <b-col md="5">
-                        <b-card-body title="Name of the Boat">
-                        <b-card-text>
-                            <p>Brand: </p>
-                            <p>Year: </p>
-                            <p>Condition:</p>
-                            <div class="row">
-                                <div class="col mt-2">
-                                    <router-link to="/admin/management/add" tag="button" class="btn btn-warning">Update</router-link>
-                                </div>
-                                <div class="col mt-2">
-                                    <ModalMembers id="3" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Delete" variant="danger" modulVariant="danger" alertText="Are you sure you want to delete the boat?" modulButtonText="Delete"/>
-                                </div>
-                            </div>
-                        </b-card-text>
-                        </b-card-body>
-                    </b-col>
-                </b-row>
-            </b-card>
-            <b-card no-body class="overflow-hidden" style="max-width: 1000px;">
-                <b-row no-gutters class="align-items-center justify-content-between">
-                    <b-col md="7">
-                        <b-card-img :src="require('../../assets/background.png')" alt="Image" class="rounded-0"></b-card-img>
-                    </b-col>
-                    <b-col md="5">
-                        <b-card-body title="Name of the Boat">
-                        <b-card-text>
-                            <p>Brand: </p>
-                            <p>Year: </p>
-                            <p>Condition:</p>
-                            <div class="row">
-                                <div class="col mt-2">
-                                    <router-link to="/admin/management/add" tag="button" class="btn btn-warning">Update</router-link>
-                                </div>
-                                <div class="col mt-2">
-                                    <ModalMembers id="4" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Delete" variant="danger" modulVariant="danger" alertText="Are you sure you want to delete the boat?" modulButtonText="Delete"/>
                                 </div>
                             </div>
                         </b-card-text>
