@@ -11,15 +11,17 @@
     </template>
 
     <template #default>
-        <div v-if="team" class="row align-items-center justify-content-between">
-            <div class="col mb-3 ml-3 align-self-center">
-                <b-avatar></b-avatar>
-            </div>
-            <div class="col my-4 align-self-center">
-                <p>{{ name }}</p>
-            </div>
-            <div class="col my-4 align-self-center">
-                <p>{{ phone }}</p>
+        <div v-if="team">
+            <div class="row align-items-center justify-content-between" v-for="user in users" :key="user.email">
+              <div class="col mb-3 ml-3 align-self-center">
+                  <b-avatar></b-avatar>
+              </div>
+              <div class="col my-4 align-self-center">
+                  <p>{{ user.firstname }} {{ user.lastname }}</p>
+              </div>
+              <div class="col my-4 align-self-center">
+                  <p>{{ user.phoneNumber }}</p>
+              </div>
             </div>
         </div>
         <div v-else>
@@ -49,10 +51,14 @@
 <script>
 export default {
     name: 'ModalMembers',
+    data() {
+      return {
+        users: this.$props.teamComposition
+      }
+    },
     props: {
         id: String,
-        name: String,
-        phone: String,
+        teamComposition: Array,
         buttonText: String,
         hideFooter: Boolean,
         hideHeader: Boolean,
