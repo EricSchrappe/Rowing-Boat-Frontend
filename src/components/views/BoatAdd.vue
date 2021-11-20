@@ -5,6 +5,19 @@
         <div class="row align-items-center justify-content-center">
             <div class="col align-self-start">
                 <div class="form-group">
+                    <label for="name">Boat Class</label>
+                    <select class="form-control" required>
+                        <option value="" selected disabled>Class</option>
+                        <option value="">1x</option>
+                        <option value="">2x</option>
+                        <option value="">2-</option>
+                        <option value="">4x</option>
+                        <option value="">4-</option>
+                        <option value="">4+</option>
+                        <option value="">8+</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name">
                 </div>
@@ -19,11 +32,15 @@
                 <div class="form-group">
                     <label>Condition</label>
                     <select class="form-control" required>
-                        <option value="" selected disabled></option>
+                        <option value="" selected disabled>Condition</option>
                         <option value="">BAD</option>
                         <option value="">USED</option>
                         <option value="">NEW</option>
                     </select>
+                </div>
+                 <div class="form-group mb-3">
+                    <label for="formFile" class="form-label">Please upload the image here</label>
+                    <input class="form-control" type="file" id="formFile">
                 </div>
             </div>
         </div>
@@ -41,6 +58,14 @@ export default {
 <style scoped>
 .center {
     text-align: center;
-    margin: 8% 0 8% 0;
+    margin: 8% 0 4% 0;
 }
+
+select:invalid {
+   color: grey
+}
+
+select:valid {
+   color: black;
+} 
 </style>

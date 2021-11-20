@@ -8,8 +8,8 @@
       <div class="row">
       <div class="col-lg-7">
         <h1 class="space display-4">Rowing Boat</h1>
-        <p class="space">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, officia. Iure quis, enim delectus a aliquam deserunt beatae illo eaque?</p>
-        <button class="btn btn-primary">Contact -></button>
+        <p class="space">Imagine a sunny day in autumn. It is 7am in the morning, the water is mirror-smooth and there is still a bit of fog above the water surface, the perfect conditions for a beautiful rowing session. So, why are you waiting?</p>
+        <router-link class="btn btn-primary" to="/reservation" tag="button">Make a reservation =></router-link>
       </div>
       <div class="col-lg-5"></div>
     </div>
@@ -55,7 +55,7 @@ export default {
 }
 
 .space{
-  margin-bottom: 8%;
+  margin-bottom: 4%;
 }
 
 .cut {
