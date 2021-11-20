@@ -9,6 +9,7 @@ import AdminRegistrations from '../components/views/AdminRegistrations.vue'
 import BoatManagement from '../components/views/BoatManagement.vue'
 import BoatAdd from '../components/views/BoatAdd.vue'
 import BoatUpdate from '../components/views/BoatUpdate.vue'
+import Privacy from '../components/views/Privacy.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/register',
     name: 'Registration page',
     component: Register
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy policy page',
+    component: Privacy
   },
   {
     path: '/reservation',
