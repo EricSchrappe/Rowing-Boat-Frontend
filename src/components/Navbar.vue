@@ -24,7 +24,7 @@
           <template #button-content>
             <b-icon icon="person-circle" aria-hidden="true"></b-icon>
           </template>
-          <b-dropdown-item-button href="/reservations">SeeReservation</b-dropdown-item-button>
+          <router-link to="/reservations" tag="b-dropdown-item-button">See Reservation</router-link>
           <b-dropdown-item-button @click="() => logout()">Logout</b-dropdown-item-button>
         </b-nav-item-dropdown>
       </b-navbar-nav>

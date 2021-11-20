@@ -3,6 +3,12 @@
         <h2 class="text-center my-5"><strong>Requested Registrations</strong></h2>
         <div class="container mt-5" v-for="userRequest in this.userRequests" :key="userRequest.user_id">
             <div class="row justify-content-center">
+                <div v-if="error">
+                    <Message :message="message" :alert_type="alert_type" />
+                </div>
+                <div v-if="error === false">
+                    <Message :message="message" :alert_type="alert_type" />
+                </div>
                 <div class="col-lg-3 borderColStart align-self-center">
                     <p class="smallHeadline">Name</p>
                     <p>{{userRequest.firstname}}</p>
@@ -25,12 +31,20 @@
 <script>
 import Vuex from 'vuex'
 import axios from 'axios'
+import Message from '../Message.vue'
+import toBoolean from '../../helpers/boolean.js'
 
 export default {
     name: 'AdminReservation',
+    components: {
+        Message,
+    },
     data() {
         return {
-            userRequests: undefined
+            userRequests: undefined,
+            error: undefined,
+            message: "",
+            alert_type: "",
         }
     },
     methods: {
@@ -45,12 +59,16 @@ export default {
             console.log(result)
             if (result.data.success)
             {
-                console.log(result.data.message)
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-success"
                 this.userRequests = this.userRequests.filter(userRequest => userRequest.user_id != userId)
             }            
             else
             {
-                // handle the error message
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-danger"
             }
         },
         async declineAccount(userId) {
@@ -63,12 +81,16 @@ export default {
             console.log(result)
             if (result.data.success)
             {
-                console.log(result.data.message)
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-success"
                 this.userRequests = this.userRequests.filter(userRequest => userRequest.user_id != userId)
             }            
             else
             {
-                // handle the error message
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-danger"
             }
     },
     },

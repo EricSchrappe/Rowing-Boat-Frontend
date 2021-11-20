@@ -4,8 +4,8 @@
     <form>
         <p>Welcome back</p>
         <h2><strong>Log in your account</strong></h2>
-        <div class="alert alert-danger text-center" role="alert" v-if="error">
-            {{ errorMessage }}
+        <div v-if="error">
+            <Message :message="errorMessage" :alert_type="alert_type" />
         </div>
         <div class="form-group">
             <label for="email">Email</label>
@@ -26,16 +26,22 @@
 <script>
 import Vuex from 'vuex'
 import axios from 'axios'
+import Message from '../Message.vue'
+import toBoolean from '../../helpers/boolean.js'
 
 
 export default {
     name: 'Login',
+    components: {
+        Message,
+    },
     data() {
         return {
             email: '',
             password: '',
             errorMessage: '',
-            error: false
+            error: undefined,
+            alert_type: ""
         }
     },
     methods: {
@@ -60,8 +66,9 @@ export default {
 
             if(!data.success)
             {
-                this.error = true
+                this.error = !toBoolean(data.success)
                 this.errorMessage = data.message
+                this.alert_type = "alert-danger"
                 console.log(this.errorMessage)
             }
             else

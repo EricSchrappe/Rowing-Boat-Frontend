@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <h2 class="center"><strong>Registration</strong></h2>
-        <div class="alert alert-danger text-center" role="alert" v-if="error">
-            {{ message }}
+        <div v-if="error">
+            <Message :message="message" :alert_type="alert_type" />
         </div>
         <form>
         <div class="row align-items-center justify-content-center">
@@ -89,11 +89,14 @@
 <script>
 import Modul from '../Modul.vue'
 import axios from 'axios'
+import Message from '../Message.vue'
+import toBoolean from '../../helpers/boolean.js'
 
 export default {
     name: 'Register',
     components: {
         Modul,
+        Message,
     },
     data() {
         return {
@@ -111,7 +114,8 @@ export default {
                 skill_level: ''
             },
             message: '',
-            error: false,
+            error: undefined,
+            alert_type: ""
         }
     },
     methods: {
@@ -134,13 +138,15 @@ export default {
                 headers: { "Content-Type": "multipart/form-data" }
             })
 
-            if(result.data.success === true){
-                this.message = result.data.message;
-                this.error = false;
+            if(result.data.success){
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-success"
                 this.$router.push('/login');
             }else{
-                this.message = result.data.message;
-                this.error = true;
+                this.error = !toBoolean(result.data.success)
+                this.message = result.data.message
+                this.alert_type = "alert-danger"
             }
 
             return false
