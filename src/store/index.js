@@ -12,7 +12,8 @@ const state = {
 
 const mutations = {
     ADD_TOKEN: (state, token) => state.token = token,
-    ADD_IS_ADMIN: (state, isAdmin) => state.isAdmin = isAdmin
+    ADD_IS_ADMIN: (state, isAdmin) => state.isAdmin = isAdmin,
+    REMOVE_TOKEN: (state) => state.token = undefined
 }
 
 const getters = {
@@ -28,7 +29,7 @@ const actions = {
         store.commit('ADD_IS_ADMIN', isAdmin)
     },
     removeToken: (store) => {
-        store.commit('ADD_TOKEN', undefined);
+        store.commit('REMOVE_TOKEN');
     },
 }
 

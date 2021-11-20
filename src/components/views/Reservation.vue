@@ -6,112 +6,106 @@
     <div class="container-fluid">
         <form class="form-inline justify-content-center spread">
             <div class="form-group">
-                <select class="form-control straightBorderRight space" required>
+                <select class="form-control straightBorderRight space" required v-model="search.type">
                     <option value="" selected disabled>Type</option>
-                    <option>RACING</option>
-                    <option>GIG</option>
+                    <option value="RACING">RACING</option>
+                    <option value="GIG">GIG</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space" required>
+                <select class="form-control noBorder space" required v-model="search.class">
                     <option value="" selected disabled>Class</option>
-                    <option>1x</option>
-                    <option>2x</option>
-                    <option>2-</option>
-                    <option>4x</option>
-                    <option>4-</option>
-                    <option>4+</option>
-                    <option>8+</option>
+                    <option value="1x">1x</option>
+                    <option value="2x">2x</option>
+                    <option value="2-">2-</option>
+                    <option value="4x">4x</option>
+                    <option value="4-">4-</option>
+                    <option value="4+">4+</option>
+                    <option value="8+">8+</option>
                 </select>
             </div>
             <div class="form-group">
                <div class="containerTime">
                     <div class="row">
                         <div class="col-md-12">
-                            <date-picker class="noBorder text-center" v-model="date" :config="options" placeholder="Date &amp; Time"></date-picker>
+                            <date-picker class="noBorder text-center" v-model="search.date" :config="options" placeholder="Date &amp; Time" required></date-picker>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space" required>
+                <select class="form-control noBorder space" v-model="search.gender">
                     <option value="" selected disabled>Gender</option>
-                    <option>MALE</option>
-                    <option>FEMALE</option>
-                    <option>DIVERSE</option>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                    <option value="DIVERSE">DIVERSE</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space" required>
+                <select class="form-control noBorder space" v-model="search.ageGroup">
                     <option value="" selected disabled>Age Group</option>
-                    <option>18-35</option>
-                    <option>36-55</option>
+                    <option value="18-35">18-35</option>
+                    <option value="36-55">36-55</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space" required>
+                <select class="form-control noBorder space" v-model="search.fitness">
                     <option value="" selected disabled>Fitness Level</option>
-                    <option>LOW</option>
-                    <option>MODERATE</option>
-                    <option>HIGH</option>
+                    <option value="LOW">LOW</option>
+                    <option value="MODERATE">MODERATE</option>
+                    <option value="HIGH">HIGH</option>
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control noBorder space" required>
+                <select class="form-control noBorder space" v-model="search.skill">
                     <option value="" selected disabled>Skill Level</option>
-                    <option>LOW</option>
-                    <option>MODERATE</option>
-                    <option>HIGH</option>
+                    <option value="LOW">LOW</option>
+                    <option value="MODERATE">MODERATE</option>
+                    <option value="HIGH">HIGH</option>
                 </select>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-search space">Search</button>
+                <button type="submit" class="btn btn-search space" @click="searchBoats">Search</button>
             </div>
         </form>
     <div class="container">
+        <div class="alert alert-danger text-center" role="alert" v-if="error">
+            {{ message }}
+        </div>
+        <div class="alert alert-success text-center" role="alert" v-if="error === false">
+            {{ message }}
+        </div>
         <h2>Results:</h2>
         <b-card-group deck class="my-4 justify-content-between">
-        <b-card no-body class="overflow-hidden" style="max-width: 1000px;">
+        <b-card no-body class="overflow-hidden" style="max-width: 1000px;" v-for="boat in this.boats" :key="boat.boat_id">
             <b-row no-gutters class="align-items-center justify-content-between">
                 <b-col md="7">
-                    <b-card-img :src="require('../../assets/background.png')" alt="Image" class="rounded-0"></b-card-img>
+                    <img v-bind:src="'data:image/jpeg;base64,' + boat.image" alt="Image" class="rounded-0" 
+                        style="min-width: 350px; max-height: 250px;"
+                    />
                 </b-col>
                 <b-col md="5">
                     <b-card-body title="Name of the Boat">
                     <b-card-text>
-                        <p>Brand: </p>
-                        <p>Year: </p>
-                        <p>Condition:</p>
+                        <p>Brand : {{ boat.brand }}</p>
+                        <p>Year : {{ boat.built_year}}</p>
+                        <p>Condition : {{ boat.condition.toLowerCase() }}</p>
+                        <p>Available slots : {{ boat.available_slots }}
                         <div class="row">
                             <div class="col">
                                 <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                                <ModalMembers id="3" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success" modulVariant="success" alertText="Are you sure you want to reverse?" modulButtonText="Reserve"/>
-                            </div>
-                        </div>
-                    </b-card-text>
-                    </b-card-body>
-                </b-col>
-            </b-row>
-        </b-card>
-        <b-card no-body class="overflow-hidden" style="max-width: 1000px;">
-            <b-row no-gutters class="align-items-center justify-content-between">
-                <b-col md="7">
-                    <b-card-img :src="require('../../assets/background.png')" alt="Image" class="rounded-0"></b-card-img>
-                </b-col>
-                <b-col md="5">
-                    <b-card-body title="Name of the Boat">
-                    <b-card-text>
-                        <p>Brand: </p>
-                        <p>Year: </p>
-                        <p>Condition:</p>
-                        <div class="row">
-                            <div class="col">
-                                <ModalMembers id="2" :team="true" :hideHeader="false" :hideFooter="true" name="Name" phone="+359-1233456" buttonText="Team" variant="outline-success" />
-                            </div>
-                            <div class="col">
-                               <ModalMembers id="4" :team="false" :hideHeader="true" :hideFooter="false" buttonText="Reverse" variant="success" modulVariant="success" alertText="Are you sure you want to reverse?" modulButtonText="Reserve"/>
+                                <ModalMembers id="3" :team="false" 
+                                    :hideHeader="true" 
+                                    :hideFooter="false" 
+                                    buttonText="Reserve" 
+                                    variant="success" 
+                                    modulVariant="success" 
+                                    alertText="Are you sure you want to reverse?"
+                                    modulButtonText="Reserve"
+                                    @reserve-boat="() => reserveBoat(boat.boat_id)"
+                                    />
                             </div>
                         </div>
                     </b-card-text>
@@ -128,7 +122,11 @@
 <script>
 import Navbar from '../Navbar.vue'
 import ModalMembers from '../ModalReservation.vue'
+import axios from 'axios'
+import Vuex from 'vuex'
 
+import toBoolean from '../../helpers/boolean.js'
+import now from '../../helpers/date.js'
 
 export default {
     name: 'Registration',
@@ -137,19 +135,80 @@ export default {
         ModalMembers,
     },
     data () {
+        console.log(now())
         return {
-            date: null,
             options: {
-            // https://momentjs.com/docs/#/displaying/
-                format: 'DD.MM.YYYY h:mm',
+                // https://momentjs.com/docs/#/displaying/
+                format: 'DD/MM/YYYY H:mm',
                 useCurrent: false,
                 showClear: true,
                 showClose: true,
                 sideBySide: true,
-            }
-        
+                minDate: now()
+            },
+            boats: [],
+            search: {
+                type: '',
+                class: '',
+                date: '',
+                gender: '',
+                ageGroup: '',
+                fitness : '',
+                skill: ''
+            },
+            error: undefined,
+            message: '',
         }
     },
+    methods: {
+        ...Vuex.mapGetters(['getTokenFromStore']),
+        async searchBoats() {
+            const result = await axios({
+                method: 'GET',
+                url: 'http://localhost:5000/boat/search',
+                params: this.search
+            })
+
+            if (!result.data.success)
+            {
+                this.error = true
+                this.message = result.data.message
+            }
+
+            const boats = result.data.boats
+            for (var i = 0; i < boats.length; ++i)
+            {
+                const boatId = boats[i].boat_id
+                const imageResult = await axios({
+                    method: 'GET',
+                    url: `http://localhost:5000/boat/${boatId}/image`,
+                    params: this.search,
+                })
+
+                let image_content = imageResult.data.encoded_image
+                image_content = image_content.substring(2, image_content.length - 1) 
+                boats[i].image = image_content
+            }
+
+            this.boats = boats
+
+            return false
+        },
+        async reserveBoat(boatId)
+        {
+            const result = await axios({
+                method: 'GET',
+                url: `http://localhost:5000/boat/${boatId}/book`,
+                headers: { "x-access-tokens": this.getTokenFromStore() },
+                params: {
+                    'date': this.search.date
+                }
+            })
+
+            this.message = result.data.message
+            this.error = !toBoolean(result.data.success)
+        }
+    }
 }
 </script>
 

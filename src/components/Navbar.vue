@@ -51,7 +51,7 @@ export default {
         ...Vuex.mapActions(['removeToken']),
         logout() {
             this.removeToken();
-            this.$router.push('/');
+            this.$router.go(0)
         }
     },
     beforeMount() {
