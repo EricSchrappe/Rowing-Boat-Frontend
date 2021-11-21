@@ -38,11 +38,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="formFile" class="form-label">Please upload the image here</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" @change="setFile">
                     </div>
                 </div>
             </div>
-            <button class="btn btn-success btn-block mt-5" type="submit">Save &amp; Exit</button>
+            <button class="btn btn-success btn-block mt-5" type="submit" @click="updateBoat">Save &amp; Exit</button>
             </form>
         </div>
     </div>
@@ -71,7 +71,31 @@ export default {
     },
     methods: {
         ...Vuex.mapGetters(['getTokenFromStore']),
+        setFile(e) {
+            this.boat.image = e.target.files[0]
+        },
+        async updateBoat() {
+            const boatId = this.$route.params.boatId
+            const formData = new FormData()
 
+            for (const key in this.boat)
+            {
+                formData.append(key, this.boat[key])
+            }
+
+            const result = await axios({
+                method: 'PATCH',
+                url: `http://localhost:5000/admin/${boatId}/update_boat`,
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data", "x-access-tokens": this.getTokenFromStore() }
+            })
+
+            this.error = !toBoolean(result.data.success)
+            this.message = result.data.message
+            this.alertType = this.error ? 'alert-danger' : 'alert-success'
+
+            return false
+        }
     },
     watch: {
     '$route.params.boatId': {
@@ -90,6 +114,7 @@ export default {
                 }
 
                 this.boat = result.data.boat
+                this.boat.image = undefined
             })()
         },
         immediate: true,
