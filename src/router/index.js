@@ -10,6 +10,7 @@ import BoatManagement from '../components/views/BoatManagement.vue'
 import BoatAdd from '../components/views/BoatAdd.vue'
 import BoatUpdate from '../components/views/BoatUpdate.vue'
 import Privacy from '../components/views/Privacy.vue'
+import Company from '../components/views/Company.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/privacy',
     name: 'Privacy policy page',
     component: Privacy
+  },
+  {
+    path: '/company',
+    name: 'Company page',
+    component: Company
   },
   {
     path: '/reservation',

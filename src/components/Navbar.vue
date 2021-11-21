@@ -12,7 +12,7 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item tag="router-link" :to="{ path: '/reservation'}" center>Reservation</b-nav-item>
         <b-nav-item href="#" center>Boats</b-nav-item>
-        <b-nav-item href="#" center>Company</b-nav-item>
+        <b-nav-item tag="router-link" :to="{ path: '/company'}" center>Company</b-nav-item>
         <b-nav-item tag="router-link" :to="{ path: '/admin/registrations'}" center v-if="adminUser">Requested Reservation</b-nav-item>
         <b-nav-item tag="router-link" :to="{ path: '/admin/management'}" center v-if="adminUser">Boat Management</b-nav-item>
       </b-navbar-nav>

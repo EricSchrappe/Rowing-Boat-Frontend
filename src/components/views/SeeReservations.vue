@@ -1,40 +1,44 @@
 <template>
-    <div class="container mt-5">
-        <h2 class="text-center my-5"><strong>See Reservations</strong></h2>
-        <div class="container" v-if="userReservations.length === 0">
-            <h4 class="text-center">You don't have any bookings right now</h4>
-        </div>
-        <div v-else>
-            <div class="container" v-if="error">
-                <Message :message="message" :alert_type="alert_type" />
+    <div>
+        <Navbar />
+        <div class="container-one-third-header"></div>
+        <div class="container-header">See Reservations</div>
+        <div class="container mt-5">
+            <div class="container-no" v-if="userReservations.length === 0">
+                <h4 class="text-center">You don't have any bookings right now</h4>
             </div>
-            <div class="container" v-if="error === false">
-                <Message :message="message" :alert_type="alert_type" />
-            </div>
-            <div class="container" v-for="userReservation in this.userReservations" :key="userReservation.booking_id">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 mr-5">
-                        <p class="smallHeadline">{{ userReservation.date }}</p>
-                    </div>
+            <div v-else>
+                <div class="container" v-if="error">
+                    <Message :message="message" :alert_type="alert_type" />
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-2 borderColStart align-self-center">
-                        <img class="mt-2" src="../../assets/rowing_icon.png" alt="boat" style="max-height: 50px; max-width: 50px;">
+                <div class="container" v-if="error === false">
+                    <Message :message="message" :alert_type="alert_type" />
+                </div>
+                <div class="container" v-for="userReservation in this.userReservations" :key="userReservation.booking_id">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 mr-5">
+                            <p class="smallHeadline">{{ userReservation.date }}</p>
+                        </div>
                     </div>
-                    <div class="col-lg-2 borderColMiddle align-self-center">
-                        <p class="smallHeadline">Name</p>
-                        <p>{{ userReservation.name }}</p>
-                    </div>
-                    <div class="col-lg-2 borderColMiddle align-self-center">
-                        <p class="smallHeadline">Boat</p>
-                        <p>{{ userReservation.type }}</p>
-                    </div>
-                    <div class="col-lg-2 borderColEnd align-self-center">
-                        <p class="smallHeadline">Class</p>
-                        <p>{{ userReservation.class }}</p>
-                    </div>
-                    <div class="col-lg-2 align-self-center ml-5">
-                        <button class="btn btn-danger btn-lg btn-block" @click="() => deleteBooking(userReservation.booking_id)">Delete</button>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-2 borderColStart align-self-center">
+                            <img class="mt-2" src="../../assets/rowing_icon.png" alt="boat" style="max-height: 50px; max-width: 50px;">
+                        </div>
+                        <div class="col-lg-2 borderColMiddle align-self-center">
+                            <p class="smallHeadline">Name</p>
+                            <p>{{ userReservation.name }}</p>
+                        </div>
+                        <div class="col-lg-2 borderColMiddle align-self-center">
+                            <p class="smallHeadline">Boat</p>
+                            <p>{{ userReservation.type }}</p>
+                        </div>
+                        <div class="col-lg-2 borderColEnd align-self-center">
+                            <p class="smallHeadline">Class</p>
+                            <p>{{ userReservation.class }}</p>
+                        </div>
+                        <div class="col-lg-2 align-self-center ml-5">
+                            <button class="btn btn-danger btn-lg btn-block" @click="() => deleteBooking(userReservation.booking_id)">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,11 +51,13 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import toBoolean from '../../helpers/boolean.js'
 import Message from '../Message.vue'
+import Navbar from '../Navbar.vue'
 
 export default {
     name: 'SeeReservations',
     components: {
         Message,
+        Navbar,
     },
     methods: {
         ...Vuex.mapGetters(['getTokenFromStore']),
@@ -101,6 +107,35 @@ export default {
 </script>
 
 <style scoped>
+.container-one-third-header{
+    position: relative;
+    background-image: url(../../assets/boat_fire.png);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px);
+    width: 100%;
+    height: 35vh;
+}
+
+.container-header {
+    position: absolute;
+    left: 20%;
+    top: 15%;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+}
+
+.container-no{
+    margin: 4% 10% 4% 10%;
+    padding: 4%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 5px 10px 20px #aaaaaa;
+    font-size: 20px;
+}
+
 .smallHeadline {
     font-size: 18px;
     font-weight: bold;
