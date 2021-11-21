@@ -11,6 +11,7 @@ import BoatAdd from '../components/views/BoatAdd.vue'
 import BoatUpdate from '../components/views/BoatUpdate.vue'
 import Privacy from '../components/views/Privacy.vue'
 import Company from '../components/views/Company.vue'
+import Boats from '../components/views/Boats.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/privacy',
     name: 'Privacy policy page',
     component: Privacy
+  },
+  {
+    path: '/boats',
+    name: 'Boats page',
+    component: Boats
   },
   {
     path: '/company',

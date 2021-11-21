@@ -93,10 +93,10 @@
                         <p>Available slots : {{ boat.available_slots }}
                         <div class="row">
                             <div class="col">
-                                <ModalMembers id="1" :team="true" :hideHeader="false" :hideFooter="true" :teamComposition="boat.team" buttonText="Team" variant="outline-success" />
+                                <ModalMembers :id="boat.boat_id" :team="true" :hideHeader="false" :hideFooter="true" :teamComposition="boat.team" buttonText="Team" variant="outline-success" />
                             </div>
                             <div class="col">
-                                <ModalMembers id="3" :team="false" 
+                                <ModalMembers :id="boat.boat_id+1" :team="false" 
                                     :hideHeader="true" 
                                     :hideFooter="false" 
                                     buttonText="Reserve" 
@@ -207,6 +207,9 @@ export default {
 
             this.message = result.data.message
             this.error = !toBoolean(result.data.success)
+            this.$router.push('/reservations');
+
+
         }
     }
 }
