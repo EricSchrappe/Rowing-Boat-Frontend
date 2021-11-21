@@ -68,6 +68,9 @@
                 <button type="submit" class="btn btn-search space" @click="searchBoats">Search</button>
             </div>
         </form>
+        <div class="container-helper">
+            <p class="helper-text">Filters: Gender, Age Group, Fitness Level, Skill Level are optional</p>
+        </div>
     <div class="container">
         <div class="alert alert-danger text-center" role="alert" v-if="error">
             {{ message }}
@@ -267,11 +270,21 @@ select:valid {
 }
 
 .spread{
-    margin: 3%;
+    margin: 3% 3% 0% 3%;
 }
 
 .space{
     padding-left: 30px;
     padding-right: 30px;
+}
+
+.container-helper {
+    margin-left: 20%;
+    margin-top: 3px;
+}
+
+.helper-text{
+    font-size:14px;
+    color: grey;
 }
 </style>
