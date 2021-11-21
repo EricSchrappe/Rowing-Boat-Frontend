@@ -36,7 +36,7 @@
             <b-button class="mx-5" size="sm" variant="secondary" @click="cancel()">
               Cancel
             </b-button>
-            <b-button class="mx-5" size="sm" :variant="modulVariant" @click="() => {$emit('reserve-boat'); ok()}">
+            <b-button class="mx-5" size="sm" :variant="modulVariant" @click="() => {$emit($props.callback); ok()}">
               {{ modulButtonText }}
             </b-button>
           </div>
@@ -67,6 +67,7 @@ export default {
         modulButtonText: String,
         alertText: String,
         modulVariant: String,
+        callback: String
     },
 }
 </script>

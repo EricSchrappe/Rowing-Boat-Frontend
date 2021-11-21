@@ -85,7 +85,7 @@
                     />
                 </b-col>
                 <b-col md="5">
-                    <b-card-body title="Name of the Boat">
+                    <b-card-body :title="boat.name">
                     <b-card-text>
                         <p>Brand : {{ boat.brand }}</p>
                         <p>Year : {{ boat.built_year}}</p>
@@ -106,6 +106,7 @@
                                     modulButtonText="Reserve"
                                     :teamComposition="boat.team"
                                     @reserve-boat="() => reserveBoat(boat.boat_id)"
+                                    callback="reserve-boat"
                                     />
                             </div>
                         </div>
@@ -182,7 +183,6 @@ export default {
                 const imageResult = await axios({
                     method: 'GET',
                     url: `http://localhost:5000/boat/${boatId}/image`,
-                    params: this.search,
                 })
 
                 let image_content = imageResult.data.encoded_image

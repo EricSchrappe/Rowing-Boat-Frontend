@@ -60,7 +60,7 @@ const routes = [
     component: BoatAdd
   },
   {
-    path: '/admin/management/update',
+    path: '/admin/management/:boatId/update',
     name: 'Admin Boat update page',
     component: BoatUpdate
   },
