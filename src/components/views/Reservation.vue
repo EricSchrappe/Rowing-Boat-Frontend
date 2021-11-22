@@ -79,7 +79,10 @@
             {{ message }}
         </div>
         <h2>Results:</h2>
-        <b-card-group deck class="my-4 justify-content-between">
+        <div class="container-no" v-if="this.boats.length === 0">
+                <h4 class="text-center">There are no boats available for your search criteria, please enter new parameters</h4>
+        </div>
+        <b-card-group v-else deck class="my-4 justify-content-between">
         <b-card no-body class="overflow-hidden" style="max-width: 1000px;" v-for="boat in this.boats" :key="boat.boat_id">
             <b-row no-gutters class="align-items-center justify-content-between">
                 <b-col md="7">
