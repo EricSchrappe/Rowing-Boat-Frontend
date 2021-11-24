@@ -3,24 +3,25 @@
         <Navbar />
         <div class="container-one-third-header"></div>
         <div class="container-header">Privacy Policy</div>
-        <div class="container-fluid">
-            <b-card no-body class="text-center">
-                <div class="policy">
-                    {{ policy }}
-                </div>
-            </b-card>
-        </div>
+        <b-card no-body class="text-center">
+            <div class="policy">
+                {{ policy }}
+            </div>
+        </b-card>
+        <FooterAll />
     </div>
 </template>
 
 <script>
 import { privacy_policy } from '../../assets/privacy_policy.js';
 import Navbar from '../Navbar.vue'
+import FooterAll from '../FooterAll.vue'
 
 export default {
     name: 'Privacy',
     components: {
         Navbar,
+        FooterAll,
     },
     data () {
         return {
