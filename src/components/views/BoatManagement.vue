@@ -60,6 +60,7 @@
             </b-card>
             </b-card-group>
         </div>
+        <FooterAll />
     </div>
 </template>
 
@@ -67,6 +68,7 @@
 import Message from '../Message.vue'
 import Navbar from '../Navbar.vue'
 import ModalMembers from '../ModalReservation.vue'
+import FooterAll from '../FooterAll.vue'
 import Vuex from 'vuex'
 
 import axios from 'axios'
@@ -76,7 +78,8 @@ export default {
     components: {
         Navbar,
         ModalMembers,
-        Message
+        Message,
+        FooterAll,
     },
     data() {
         return {

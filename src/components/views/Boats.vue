@@ -28,11 +28,13 @@
             </b-card>
             </b-card-group>
         </div>
+        <FooterAll />
     </div>
 </template>
 
 <script>
 import Navbar from '../Navbar.vue'
+import FooterAll from '../FooterAll.vue'
 import Vuex from 'vuex'
 
 import axios from 'axios'
@@ -41,6 +43,7 @@ export default {
     name: 'Boat',
     components: {
         Navbar,
+        FooterAll,
     },
     data() {
         return {

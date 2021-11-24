@@ -124,12 +124,14 @@
         </b-card-group>
     </div>
 </div>
+<FooterAll />
 </div>
 </template>
 
 <script>
 import Navbar from '../Navbar.vue'
 import ModalMembers from '../ModalReservation.vue'
+import FooterAll from '../FooterAll.vue'
 import axios from 'axios'
 import Vuex from 'vuex'
 
@@ -141,6 +143,7 @@ export default {
     components: {
         Navbar,
         ModalMembers,
+        FooterAll,
     },
     data () {
         return {

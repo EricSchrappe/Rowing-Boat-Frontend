@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+        <FooterAll />
     </div>
 </template>
 
@@ -52,12 +53,14 @@ import axios from 'axios'
 import toBoolean from '../../helpers/boolean.js'
 import Message from '../Message.vue'
 import Navbar from '../Navbar.vue'
+import FooterAll from '../FooterAll.vue'
 
 export default {
     name: 'SeeReservations',
     components: {
         Message,
         Navbar,
+        FooterAll
     },
     methods: {
         ...Vuex.mapGetters(['getTokenFromStore']),

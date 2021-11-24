@@ -29,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <FooterAll />
     </div>
 </template>
 
@@ -38,12 +39,14 @@ import axios from 'axios'
 import Message from '../Message.vue'
 import toBoolean from '../../helpers/boolean.js'
 import Navbar from '../Navbar.vue'
+import FooterAll from '../FooterAll.vue'
 
 export default {
     name: 'AdminReservation',
     components: {
         Message,
         Navbar,
+        FooterAll,
     },
     data() {
         return {

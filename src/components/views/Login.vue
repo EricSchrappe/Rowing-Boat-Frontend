@@ -1,26 +1,25 @@
 <template>
-<div class="form-container">
-    <div class="image-holder"></div>
-    <form>
-        <p>Welcome back</p>
-        <h2><strong>Log in your account</strong></h2>
-        <div v-if="error">
-            <Message :message="errorMessage" :alert_type="alert_type" />
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
-        </div>
-        <button class="btn btn-success btn-block" type="button" @click="e => submit(e)">Login</button>
-        <p class="no">Don't have an account?</p>
-        <router-link to='/register' tag="button" class="btn btn-secondary btn-block">Register</router-link>
-    </form>
-</div>
-
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form>
+            <p>Welcome back</p>
+            <h2><strong>Log in your account</strong></h2>
+            <div v-if="error">
+                <Message :message="errorMessage" :alert_type="alert_type" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+            </div>
+            <button class="btn btn-success btn-block" type="button" @click="e => submit(e)">Login</button>
+            <p class="no">Don't have an account?</p>
+            <router-link to='/register' tag="button" class="btn btn-secondary btn-block">Register</router-link>
+        </form>
+    </div>
 </template>
 
 <script>

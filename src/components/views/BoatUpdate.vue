@@ -45,6 +45,7 @@
             <button class="btn btn-success btn-block mt-5" type="submit" @click="updateBoat">Save &amp; Exit</button>
             </form>
         </div>
+        <FooterAll />
     </div>
 </template>
 
@@ -55,12 +56,13 @@ import axios from 'axios'
 
 import Navbar from '../Navbar.vue'
 import Message from '../Message.vue'
+import FooterAll from '../FooterAll.vue'
 
 import toBoolean from '../../helpers/boolean.js'
 
 export default {
     name: 'BoatUpdate',
-    components: { Navbar, Message },
+    components: { Navbar, Message, FooterAll, },
     data() {
         return {
             error: undefined,
